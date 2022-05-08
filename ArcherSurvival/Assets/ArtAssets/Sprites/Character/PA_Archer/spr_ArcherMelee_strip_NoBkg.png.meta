@@ -1,0 +1,444 @@
+fileFormatVersion: 2
+guid: 614d08aed0ecf7c48918a5c6220aa315
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -3507642287945024449
+    second: spr_ArcherMelee_strip_NoBkg_3
+  - first:
+      213: -7063324460009203258
+    second: spr_ArcherMelee_strip_NoBkg_4
+  - first:
+      213: 900520822277682719
+    second: spr_ArcherMelee_strip_NoBkg_5
+  - first:
+      213: 1186533346117086666
+    second: spr_ArcherMelee_strip_NoBkg_0
+  - first:
+      213: -6980642963973101430
+    second: spr_ArcherMelee_strip_NoBkg_1
+  - first:
+      213: -3842900499396239051
+    second: spr_ArcherMelee_strip_NoBkg_2
+  - first:
+      213: 3398036825352594433
+    second: spr_ArcherMelee_strip_NoBkg_6
+  - first:
+      213: 4585856664268319840
+    second: spr_ArcherMelee_strip_NoBkg_7
+  - first:
+      213: 4206360236105249706
+    second: spr_ArcherMelee_strip_NoBkg_8
+  - first:
+      213: 5347555214844355933
+    second: spr_ArcherMelee_strip_NoBkg_9
+  - first:
+      213: 6156141235964118036
+    second: spr_ArcherMelee_strip_NoBkg_10
+  - first:
+      213: -4027363473593538756
+    second: spr_ArcherMelee_strip_NoBkg_11
+  - first:
+      213: -5786938423962338772
+    second: spr_ArcherMelee_strip_NoBkg_12
+  - first:
+      213: -3748026166648516718
+    second: spr_ArcherMelee_strip_NoBkg_13
+  externalObjects: {}
+  serializedVersion: 11
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  platformSettings:
+  - serializedVersion: 3
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 3
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_3
+      rect:
+        serializedVersion: 2
+        x: 430
+        y: 50
+        width: 35
+        height: 46
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f3cf5e36ce9525fc0800000000000000
+      internalID: -3507642287945024449
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_4
+      rect:
+        serializedVersion: 2
+        x: 559
+        y: 50
+        width: 54
+        height: 39
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6c9d2d3a3d70afd90800000000000000
+      internalID: -7063324460009203258
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_5
+      rect:
+        serializedVersion: 2
+        x: 687
+        y: 50
+        width: 51
+        height: 35
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f1634bcaaea4f7c00800000000000000
+      internalID: 900520822277682719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_0
+      rect:
+        serializedVersion: 2
+        x: 1844
+        y: 50
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: acde671bac9677010800000000000000
+      internalID: 1186533346117086666
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_1
+      rect:
+        serializedVersion: 2
+        x: 1974
+        y: 50
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a88ad849536cf1f90800000000000000
+      internalID: -6980642963973101430
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_2
+      rect:
+        serializedVersion: 2
+        x: 2099
+        y: 51
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 531e05a3b564baac0800000000000000
+      internalID: -3842900499396239051
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_6
+      rect:
+        serializedVersion: 2
+        x: 2230
+        y: 51
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 10466d43d70482f20800000000000000
+      internalID: 3398036825352594433
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_7
+      rect:
+        serializedVersion: 2
+        x: 2356
+        y: 52
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 06c2298d65c34af30800000000000000
+      internalID: 4585856664268319840
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_8
+      rect:
+        serializedVersion: 2
+        x: 2486
+        y: 51
+        width: 52
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aa3b166395eff5a30800000000000000
+      internalID: 4206360236105249706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_9
+      rect:
+        serializedVersion: 2
+        x: 2612
+        y: 51
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d55e595a225563a40800000000000000
+      internalID: 5347555214844355933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_10
+      rect:
+        serializedVersion: 2
+        x: 2743
+        y: 50
+        width: 50
+        height: 40
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 41486c466d10f6550800000000000000
+      internalID: 6156141235964118036
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_11
+      rect:
+        serializedVersion: 2
+        x: 1071
+        y: 49
+        width: 50
+        height: 37
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c37e217324eeb18c0800000000000000
+      internalID: -4027363473593538756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_12
+      rect:
+        serializedVersion: 2
+        x: 1204
+        y: 48
+        width: 40
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c2a7aa6f92aa0bfa0800000000000000
+      internalID: -5786938423962338772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_ArcherMelee_strip_NoBkg_13
+      rect:
+        serializedVersion: 2
+        x: 1333
+        y: 48
+        width: 31
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 29fcb003f065cfbc0800000000000000
+      internalID: -3748026166648516718
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+  spritePackingTag: 
+  pSDRemoveMatte: 0
+  pSDShowRemoveMatteOption: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
