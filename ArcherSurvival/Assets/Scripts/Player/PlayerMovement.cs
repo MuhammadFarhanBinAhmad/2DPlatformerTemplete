@@ -7,25 +7,32 @@ public class PlayerMovement : MonoBehaviour
     Rigidbody2D p_Rigidbody2D;
     PlayerAnim scp_PlayerAnim;
     PlayerAttack scp_PlayerAttack;
+    PlayerHealth scp_PlayerHealth;
+    PlayerGroundCheck scp_PlayerGroundCheck;
 
     //Movement
     [SerializeField] internal float m_PlayerSpeed;
     [SerializeField] float m_PlayerJumpForce;
-    [SerializeField] internal bool m_IsGrounded;
     [SerializeField] float m_RollMultiplier;
-
+    [SerializeField] bool m_IsRolling;
+    [SerializeField] float m_JumpTimeCounter;
+    [SerializeField] float m_JumpTime;
+    //Effect
+    [SerializeField] GameObject vfx_JumpSmoke;
     // Start is called before the first frame update
     void Start()
     {
         p_Rigidbody2D = GetComponent<Rigidbody2D>();
         scp_PlayerAnim = FindObjectOfType<PlayerAnim>();
-        scp_PlayerAttack = FindObjectOfType<PlayerAttack>();
+        scp_PlayerAttack = GetComponent<PlayerAttack>();
+        scp_PlayerHealth = GetComponent<PlayerHealth>();
+        scp_PlayerGroundCheck = FindObjectOfType<PlayerGroundCheck>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!scp_PlayerAttack.pa_UsingMeleeAttack)
+        if (!scp_PlayerAttack.pa_UsingMeleeAttack && !scp_PlayerHealth.s_isStun)
         {
             Running();
             Jumping();
@@ -43,44 +50,33 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
+        //movement
         transform.position += new Vector3(m_HorizontalMovement, 0, 0) * m_PlayerSpeed * Time.fixedDeltaTime;
     }
 
     void DodgeRoll()
     {
-        if (Input.GetButtonDown("DodgeRoll") && Input.GetAxis("Horizontal") !=0 && m_IsGrounded)
-        {
-            print("Roll_01");
-            scp_PlayerAnim.DodgeRollAnim();
-            InvokeRepeating("Rolling",0,0.1f);
-            StartCoroutine("CancelRoll");
-            
-        }
-    }
-    void Rolling()
-    {
-        print("Roll_02");
         float m_HorizontalMovement = Input.GetAxis("Horizontal");
-        transform.position += new Vector3(m_HorizontalMovement, 0, 0) * (m_PlayerSpeed* m_RollMultiplier) * Time.fixedDeltaTime;
-    }
-    IEnumerator CancelRoll()
-    {
-        yield return new WaitForSeconds(.5f);
-        CancelInvoke();
+        if (Input.GetButton("DodgeRoll") && Input.GetAxis("Horizontal") !=0 && scp_PlayerGroundCheck.m_IsGrounded)
+        {
+            transform.position += new Vector3(m_HorizontalMovement, 0, 0) * m_PlayerSpeed * m_RollMultiplier * Time.fixedDeltaTime;
+        }
     }
     void Jumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && Mathf.Abs(p_Rigidbody2D.velocity.y) < 0.1f)
+        if (Input.GetKeyDown(KeyCode.Space) && scp_PlayerGroundCheck.m_IsGrounded)
         {
-            p_Rigidbody2D.AddForce(new Vector2(0, m_PlayerJumpForce), ForceMode2D.Impulse);
-            m_IsGrounded = false;
+            m_JumpTimeCounter = m_JumpTime;
+            p_Rigidbody2D.velocity = Vector2.up * m_PlayerJumpForce;
+            vfx_JumpSmoke.SetActive(true);
         }
-    }
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.gameObject.layer == 6)
+        if (Input.GetKey(KeyCode.Space) && !scp_PlayerGroundCheck.m_IsGrounded)
         {
-            m_IsGrounded = true;
+            if (m_JumpTimeCounter >0)
+            {
+                p_Rigidbody2D.velocity = Vector2.up * m_PlayerJumpForce;
+                m_JumpTimeCounter -= Time.deltaTime;
+            }
         }
     }
 }

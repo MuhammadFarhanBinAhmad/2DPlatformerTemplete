@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class EnemyDamageBox : MonoBehaviour
 {
-    PlayerHealth scp_PlayerHealth;
 
     public int Damage;
 

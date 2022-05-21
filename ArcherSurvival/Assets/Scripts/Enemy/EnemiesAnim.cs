@@ -15,6 +15,10 @@ public class EnemiesAnim : MonoBehaviour
     {
         anim_EnemyAnimator.SetTrigger("TakingDamage");
     }
+    internal void RunningAnim(bool isRunning)
+    {
+        anim_EnemyAnimator.SetBool("StopRunning", isRunning);
+    }
     internal void AttackAnim()
     {
         anim_EnemyAnimator.SetTrigger("Attacking");

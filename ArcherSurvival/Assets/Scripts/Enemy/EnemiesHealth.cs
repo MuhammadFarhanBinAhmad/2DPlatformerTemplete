@@ -8,7 +8,7 @@ public class EnemiesHealth : MonoBehaviour
     EnemyMovement scp_EnemiesMovement;
 
     [SerializeField] internal int es_EnemyHealth;
-
+    [SerializeField] int es_StunPeriod;
     [SerializeField] bool type_FlyingEnemy;
 
     //for FlyingEnemy
@@ -56,7 +56,9 @@ public class EnemiesHealth : MonoBehaviour
     {
         scp_EnemiesAnim.HitAnim();
         scp_EnemiesMovement.em_CurrentSpeed = 0;
-        yield return new WaitForSeconds(1);
+        scp_EnemiesAnim.RunningAnim(true);
+        yield return new WaitForSeconds(es_StunPeriod);
+        scp_EnemiesAnim.RunningAnim(false);
         scp_EnemiesMovement.em_CurrentSpeed = scp_EnemiesMovement.em_Speed;
     }
 

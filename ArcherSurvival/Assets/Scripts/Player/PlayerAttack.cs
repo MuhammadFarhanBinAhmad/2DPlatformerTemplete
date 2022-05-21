@@ -7,10 +7,14 @@ public class PlayerAttack : MonoBehaviour
 
     PlayerAnim scp_PlayerAnim;
     PlayerMovement scp_PlayerMovement;
-    [SerializeField]PlayerDamageBox pa_PlayerDamageBox;
+    [SerializeField]PlayerDamageBox scp_PlayerDamageBox;
+    PlayerGroundCheck scp_GroundCheck;
+    PlayerUI scp_PlayerUI;
 
+    [Header("ArrowStats")]
     [SerializeField] Transform go_ArrowSpawnPos;
     [SerializeField] GameObject go_Arrow;
+    [SerializeField] internal int inv_TotalArrow;
 
     [Header("FireRate")]
     [SerializeField] float pa_ArrowFireRate;
@@ -30,7 +34,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] int pa_HeavyMeleeDamage;
 
     float next_Time_LightAttack;
-    float next_Time_HeavyAttack;
+    float next_Time_HeavyAttack = 0;
     float next_Time_ArrowAttack;
 
 
@@ -39,10 +43,16 @@ public class PlayerAttack : MonoBehaviour
     {
         scp_PlayerAnim = FindObjectOfType<PlayerAnim>();
         scp_PlayerMovement = FindObjectOfType<PlayerMovement>();
+        scp_GroundCheck = FindObjectOfType<PlayerGroundCheck>();
+        scp_PlayerUI = FindObjectOfType<PlayerUI>();
+
+        //Set UI
+        scp_PlayerUI.UpdateArrowInventory(inv_TotalArrow);
+
     }
     void Update()
     {
-        if (Input.GetAxis("Horizontal") == 0 && scp_PlayerMovement.m_IsGrounded)
+        if (Input.GetAxis("Horizontal") == 0 && scp_GroundCheck.m_IsGrounded)
         {
             if (Input.GetButtonDown("ArrowAttack") && Time.time >= next_Time_ArrowAttack && !pa_UsingMeleeAttack)
             {
@@ -71,12 +81,17 @@ public class PlayerAttack : MonoBehaviour
     }
     void ShootArrowAttack()
     {
-        GameObject a = Instantiate(go_Arrow, go_ArrowSpawnPos.transform.position, transform.rotation);
-        scp_PlayerAnim.ArrowAttackAnim();
+        if (inv_TotalArrow > 0)
+        {
+            GameObject a = Instantiate(go_Arrow, go_ArrowSpawnPos.transform.position, transform.rotation);
+            scp_PlayerAnim.ArrowAttackAnim();
+            inv_TotalArrow--;
+            scp_PlayerUI.UpdateArrowInventory(inv_TotalArrow);
+        }
     }
     void LightMeleeAttack()
     {
-        pa_PlayerDamageBox.Damage = pa_LightMeleeDamage;
+        scp_PlayerDamageBox.Damage = pa_LightMeleeDamage;
         pa_UsingMeleeAttack = true;
         pa_AttackCount++;
         scp_PlayerAnim.LightMeleeAttackAnim(pa_AttackCount);
@@ -84,7 +99,7 @@ public class PlayerAttack : MonoBehaviour
     }
     void HeavyMeleeAttack()
     {
-        pa_PlayerDamageBox.Damage = pa_HeavyMeleeDamage;
+        scp_PlayerDamageBox.Damage = pa_HeavyMeleeDamage;
         pa_UsingMeleeAttack = true;
         pa_AttackCount++;
         scp_PlayerAnim.HeavyMeleeAttackAnim(pa_AttackCount);

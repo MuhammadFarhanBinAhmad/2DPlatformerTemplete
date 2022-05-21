@@ -6,11 +6,11 @@ public class EnemyMovement : MonoBehaviour
 {
 
     EnemiesAttack scp_EnemiesAttack;
-
-    [SerializeField]PlayerHealth scp_PlayerHealth;
+    PlayerHealth scp_PlayerHealth;
+    EnemiesAnim scp_EnemiesAnim;
 
     [SerializeField] Transform pos_Point01, pos_Point02;
-    [SerializeField] Transform pos_CurrentPoint;
+    Transform pos_CurrentPoint;
 
     [SerializeField] internal float em_Speed;
     internal float em_CurrentSpeed;
@@ -19,7 +19,7 @@ public class EnemyMovement : MonoBehaviour
     bool hit_Player;
 
     [SerializeField] float em_RestTimeBeforeMoving;
-    [SerializeField]int em_CurrentMovementState;
+    int em_CurrentMovementState;
 
     RaycastHit2D hit;
     Vector3 raycast;
@@ -27,6 +27,7 @@ public class EnemyMovement : MonoBehaviour
     private void Start()
     {
         scp_EnemiesAttack = FindObjectOfType<EnemiesAttack>();
+        scp_EnemiesAnim = GetComponentInChildren<EnemiesAnim>();
 
         em_CurrentSpeed = em_Speed;
         pos_CurrentPoint = pos_Point01;
@@ -48,6 +49,8 @@ public class EnemyMovement : MonoBehaviour
             if (!em_Stop)
             {
                 em_Stop = true;
+                scp_EnemiesAnim.RunningAnim(em_Stop);
+
                 em_CurrentMovementState = 1;
                 StartCoroutine("StartRest");
             }
@@ -58,9 +61,12 @@ public class EnemyMovement : MonoBehaviour
         {
             if (hit.collider.GetComponent<PlayerHealth>() != null)
             {
+                //stop to attack
                 if (!em_Stop)
                 {
                     em_Stop = true;
+                    scp_EnemiesAnim.RunningAnim(em_Stop);
+
                     scp_PlayerHealth = hit.collider.GetComponent<PlayerHealth>();
                     em_CurrentMovementState = 2;
                 }
@@ -87,10 +93,12 @@ public class EnemyMovement : MonoBehaviour
             //Rest
             case 1:
                 em_Stop = true;
+                scp_EnemiesAnim.RunningAnim(em_Stop);
                 break;
             //ContactPlayer
             case 2:
                 em_Stop = true;
+                scp_EnemiesAnim.RunningAnim(em_Stop);
                 scp_EnemiesAttack.DetectPlayer();
                 break;
 
@@ -111,19 +119,32 @@ public class EnemyMovement : MonoBehaviour
         }
         em_CurrentMovementState = 0;
     }
+    void ChangeDirection()
+    {
+        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);//Face opposite direction
+
+        em_Stop = false;
+        scp_EnemiesAnim.RunningAnim(em_Stop);
+
+        em_Speed = em_Speed *-1;//Move opposite directon
+        em_CurrentSpeed = em_Speed;
+        raycast *= -1;
+    }
     IEnumerator ContinueMoving()
     {
         yield return new WaitForSeconds(em_RestTimeBeforeMoving);
+
         em_Stop = false;
+        scp_EnemiesAnim.RunningAnim(em_Stop);
+
         em_CurrentMovementState = 0;
     }
     IEnumerator StartRest()
     {
         yield return new WaitForSeconds(em_RestTimeBeforeMoving);
-        transform.localScale = new Vector2(transform.localScale.x * -1, transform.localScale.y);
-        em_Stop = false;
-        em_CurrentSpeed *= -1;
-        raycast *= -1;
+
+        ChangeDirection();
+
         ChangeCurrentPoint();
     }
 }

@@ -5,13 +5,16 @@ using UnityEngine;
 public class PlayerAnim : MonoBehaviour
 {
     PlayerMovement scp_PlayerMovement;
+    PlayerGroundCheck scp_PlayerGroundCheck;
 
     [SerializeField] Animator anim_PlayerAnimator;
     bool m_IsMoving;
+    bool m_IsRolling;
     // Start is called before the first frame update
     void Start()
     {
         scp_PlayerMovement = FindObjectOfType<PlayerMovement>();
+        scp_PlayerGroundCheck = FindObjectOfType<PlayerGroundCheck>();
         anim_PlayerAnimator = GetComponent<Animator>();
     }
 
@@ -20,6 +23,7 @@ public class PlayerAnim : MonoBehaviour
     {
         RunningAnimation();
         JumpingAnimation();
+        DodgeRollAnim();
     }
     void RunningAnimation()
     {
@@ -36,7 +40,7 @@ public class PlayerAnim : MonoBehaviour
     }
     void JumpingAnimation()
     {
-        anim_PlayerAnimator.SetBool("Grounded", scp_PlayerMovement.m_IsGrounded);
+        anim_PlayerAnimator.SetBool("Grounded", scp_PlayerGroundCheck.m_IsGrounded);
     }
     internal void ArrowAttackAnim()
     {
@@ -52,7 +56,25 @@ public class PlayerAnim : MonoBehaviour
     }
     internal void DodgeRollAnim()
     {
-        anim_PlayerAnimator.SetTrigger("DodgeRoll");
+        RaycastHit2D hit;
+        hit = Physics2D.Raycast(transform.position, transform.up, 1);
 
+        if (Input.GetButton("DodgeRoll") && Input.GetAxis("Horizontal") != 0 && scp_PlayerGroundCheck.m_IsGrounded)
+        {
+            m_IsRolling = true;
+            anim_PlayerAnimator.SetBool("DodgeRoll", m_IsRolling);
+        }
+        else
+        {
+            if (hit.collider == null)
+            {
+                m_IsRolling = false;
+                anim_PlayerAnimator.SetBool("DodgeRoll", m_IsRolling);
+            }    
+        }
+    }
+    internal void StunAnimation()
+    {
+        anim_PlayerAnimator.SetTrigger("Stun");
     }
 }
