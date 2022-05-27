@@ -11,6 +11,7 @@ public class PlayerMovement : MonoBehaviour
     PlayerGroundCheck scp_PlayerGroundCheck;
 
     //Movement
+    [SerializeField] internal float m_StartingPlayerSpeed;
     [SerializeField] internal float m_PlayerSpeed;
     [SerializeField] float m_PlayerJumpForce;
     [SerializeField] float m_RollMultiplier;
@@ -27,12 +28,14 @@ public class PlayerMovement : MonoBehaviour
         scp_PlayerAttack = GetComponent<PlayerAttack>();
         scp_PlayerHealth = GetComponent<PlayerHealth>();
         scp_PlayerGroundCheck = FindObjectOfType<PlayerGroundCheck>();
+
+        ResetMovementStats();
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (!scp_PlayerAttack.pa_UsingMeleeAttack && !scp_PlayerHealth.s_isStun)
+        if (!scp_PlayerAttack.stats_UsingMeleeAttack && !scp_PlayerHealth.s_isStun)
         {
             Running();
             Jumping();
@@ -42,6 +45,8 @@ public class PlayerMovement : MonoBehaviour
     void Running()
     {
         float m_HorizontalMovement = Input.GetAxis("Horizontal");
+        //movement
+        transform.position += new Vector3(m_HorizontalMovement, 0, 0) * m_PlayerSpeed * Time.fixedDeltaTime;
         if (m_HorizontalMovement >= .1)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
@@ -50,8 +55,6 @@ public class PlayerMovement : MonoBehaviour
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
         }
-        //movement
-        transform.position += new Vector3(m_HorizontalMovement, 0, 0) * m_PlayerSpeed * Time.fixedDeltaTime;
     }
 
     void DodgeRoll()
@@ -78,5 +81,20 @@ public class PlayerMovement : MonoBehaviour
                 m_JumpTimeCounter -= Time.deltaTime;
             }
         }
+    }
+    internal void UpdateMovementStats(bool Multiply, bool Divide, float valueto)
+    {
+        if (Multiply)
+        {
+            m_PlayerSpeed *= valueto;
+        }
+        if (Divide)
+        {
+            m_PlayerSpeed /= valueto;
+        }
+    }
+    internal void ResetMovementStats()
+    {
+        m_PlayerSpeed = m_StartingPlayerSpeed;
     }
 }

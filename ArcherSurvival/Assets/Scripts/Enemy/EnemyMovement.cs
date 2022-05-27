@@ -88,7 +88,10 @@ public class EnemyMovement : MonoBehaviour
         {
             //Move
             case 0:
-                transform.position += transform.right* em_CurrentSpeed * Time.fixedDeltaTime;
+                if (!em_Stop)
+                {
+                    transform.position += transform.right * em_CurrentSpeed * Time.fixedDeltaTime;
+                }
                 break;
             //Rest
             case 1:

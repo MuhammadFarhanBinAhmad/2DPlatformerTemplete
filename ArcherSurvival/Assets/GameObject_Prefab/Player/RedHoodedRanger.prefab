@@ -5165,11 +5165,11 @@ BoxCollider2D:
   m_GameObject: {fileID: 8973562156861938843}
   m_Enabled: 1
   m_Density: 1
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 6200000, guid: dba1a0de9ff23b9438d290f96b730280, type: 2}
   m_IsTrigger: 0
   m_UsedByEffector: 0
   m_UsedByComposite: 0
-  m_Offset: {x: -0.0019975752, y: -0.013982289}
+  m_Offset: {x: -0.0019975752, y: -0.012795836}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
@@ -5180,7 +5180,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 0.15706825, y: 0.31068367}
+  m_Size: {x: 0.15706825, y: 0.30831075}
   m_EdgeRadius: 0
 --- !u!114 &8973562156861938846
 MonoBehaviour:
@@ -5207,7 +5207,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 974592764c097e9449c7320a0e0d0633, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  s_PlayerHealth: 100
+  s_TotalPlayerHealth: 100
+  s_CurrentPlayerHealth: 0
   s_PushbackForce: 3
   t_StunTime: 1
 --- !u!114 &1919842748
@@ -5222,12 +5223,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c31506f78de1347bb33cdaa88751ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_PlayerSpeed: 3
-  m_PlayerJumpForce: 8
+  m_PlayerSpeed: 2
+  m_PlayerJumpForce: 6
   m_RollMultiplier: 2
   m_IsRolling: 0
   m_JumpTimeCounter: 0
-  m_JumpTime: 0
+  m_JumpTime: 0.1
   vfx_JumpSmoke: {fileID: 8973562155562699932}
 --- !u!114 &1919842749
 MonoBehaviour:
@@ -5244,16 +5245,17 @@ MonoBehaviour:
   scp_PlayerDamageBox: {fileID: 8973562157051276634}
   go_ArrowSpawnPos: {fileID: 8973562156525624850}
   go_Arrow: {fileID: 6979420186180525528, guid: 172261d3778d28f4bb4c0084a09a3fb8, type: 3}
-  inv_TotalArrow: 20
-  pa_ArrowFireRate: 1.5
-  pa_LightAttackRate: 4
-  pa_HeavyAttackRate: 1.65
-  pa_AttackCount: 0
-  pa_LightMeleeTimeBeforeReset: 0.7
-  pa_HeavyMeleeTimeBeforeReset: 0.8
-  pa_UsingMeleeAttack: 0
-  pa_LightMeleeDamage: 10
-  pa_HeavyMeleeDamage: 20
+  stats_ArrowFireRate: 3
+  stats_LightAttackRate: 4
+  stats_HeavyAttackRate: 1.5
+  stats_AttackCount: 0
+  stats_LightMeleeTimeBeforeReset: 0.65
+  stats_HeavyMeleeTimeBeforeReset: 0.75
+  stats_UsingMeleeAttack: 0
+  stats_LightMeleeDamage: 10
+  stats_HeavyMeleeDamage: 20
+  stats_BowDamage: 5
+  stats_ArrowSpeed: 15
 --- !u!1 &8973562157051276644
 GameObject:
   m_ObjectHideFlags: 0

@@ -7,7 +7,7 @@ public class EnemiesHealth : MonoBehaviour
     EnemiesAnim scp_EnemiesAnim;
     EnemyMovement scp_EnemiesMovement;
 
-    [SerializeField] internal int es_EnemyHealth;
+    [SerializeField] internal float es_EnemyHealth;
     [SerializeField] int es_StunPeriod;
     [SerializeField] bool type_FlyingEnemy;
 
@@ -19,7 +19,7 @@ public class EnemiesHealth : MonoBehaviour
         scp_EnemiesMovement = GetComponent<EnemyMovement>();
     }
 
-    public void TakeDamage(int dmg)
+    public void TakeDamage(float dmg)
     {
         if (es_EnemyHealth > 0)
         {
@@ -30,6 +30,7 @@ public class EnemiesHealth : MonoBehaviour
         {
             if (!type_FlyingEnemy)
             {
+                scp_EnemiesMovement.em_Stop = true;
                 scp_EnemiesAnim.DeathAnim();
                 StartCoroutine("DestroyGameObject");
             }
@@ -42,7 +43,7 @@ public class EnemiesHealth : MonoBehaviour
     }
     IEnumerator DestroyGameObject()
     {
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(1f);
         Destroy(gameObject);
     }
     void Falling()
@@ -55,16 +56,18 @@ public class EnemiesHealth : MonoBehaviour
     IEnumerator EnemyStun()
     {
         scp_EnemiesAnim.HitAnim();
-        scp_EnemiesMovement.em_CurrentSpeed = 0;
+        //scp_EnemiesMovement.em_CurrentSpeed = 0;
+        scp_EnemiesMovement.em_Stop = true;
         scp_EnemiesAnim.RunningAnim(true);
         yield return new WaitForSeconds(es_StunPeriod);
         scp_EnemiesAnim.RunningAnim(false);
-        scp_EnemiesMovement.em_CurrentSpeed = scp_EnemiesMovement.em_Speed;
+        scp_EnemiesMovement.em_Stop = false;
+        //scp_EnemiesMovement.em_CurrentSpeed = scp_EnemiesMovement.em_Speed;
     }
 
     void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.layer == 6)
+        if (other.gameObject.layer == 6 && type_FlyingEnemy)
         {
             scp_EnemiesAnim.DeathAnim();
             StartCoroutine("DestroyGameObject");

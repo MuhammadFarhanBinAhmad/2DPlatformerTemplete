@@ -11,30 +11,39 @@ public class PlayerAttack : MonoBehaviour
     PlayerGroundCheck scp_GroundCheck;
     PlayerUI scp_PlayerUI;
 
+
+    /// <NOTE>
+    /// Need to manually input weapon stats in the beginning
+    /// </NOTE>
     [Header("ArrowStats")]
     [SerializeField] Transform go_ArrowSpawnPos;
     [SerializeField] GameObject go_Arrow;
-    [SerializeField] internal int inv_TotalArrow;
 
     [Header("FireRate")]
-    [SerializeField] float pa_ArrowFireRate;
-    [SerializeField] float pa_LightAttackRate;
-    [SerializeField] float pa_HeavyAttackRate;
+    [SerializeField] float stats_ArrowFireRate;
+    [SerializeField] float stats_LightAttackRate;
+    [SerializeField] float stats_HeavyAttackRate;
 
-    [SerializeField]int pa_AttackCount;
+    [SerializeField]int stats_AttackCount;
 
     [Header("AttackTimer")]
-    [SerializeField]float pa_LightMeleeTimeBeforeReset;
-    [SerializeField] float pa_HeavyMeleeTimeBeforeReset;
-    float pa_AttackTimeReset;
-    [SerializeField]internal bool pa_UsingMeleeAttack;
+    [SerializeField]float stats_LightMeleeTimeBeforeReset;
+    [SerializeField] float stats_HeavyMeleeTimeBeforeReset;
+    float stats_AttackTimeReset;
+    [SerializeField]internal bool stats_UsingMeleeAttack;
 
     [Header("Damage")]
-    [SerializeField] int pa_LightMeleeDamage;
-    [SerializeField] int pa_HeavyMeleeDamage;
+    [SerializeField] float stats_StartingLightMeleeDamage;
+    [SerializeField] float stats_StartingHeavyMeleeDamage;
+    [SerializeField] float stats_StartingBowDamage;
+    [SerializeField] float stats_StartingArrowSpeed;
+    [SerializeField] float stats_LightMeleeDamage;
+    [SerializeField] float stats_HeavyMeleeDamage;
+    [SerializeField] float stats_BowDamage;
+    [SerializeField] float stats_ArrowSpeed;
 
     float next_Time_LightAttack;
-    float next_Time_HeavyAttack = 0;
+    float next_Time_HeavyAttack;
     float next_Time_ArrowAttack;
 
 
@@ -45,74 +54,124 @@ public class PlayerAttack : MonoBehaviour
         scp_PlayerMovement = FindObjectOfType<PlayerMovement>();
         scp_GroundCheck = FindObjectOfType<PlayerGroundCheck>();
         scp_PlayerUI = FindObjectOfType<PlayerUI>();
-
-        //Set UI
-        scp_PlayerUI.UpdateArrowInventory(inv_TotalArrow);
-
+        //Implement starting value
+        stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
+        stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
+        stats_BowDamage = stats_StartingBowDamage;
+        stats_ArrowSpeed = stats_StartingArrowSpeed;
     }
     void Update()
     {
         if (Input.GetAxis("Horizontal") == 0 && scp_GroundCheck.m_IsGrounded)
         {
-            if (Input.GetButtonDown("ArrowAttack") && Time.time >= next_Time_ArrowAttack && !pa_UsingMeleeAttack)
+            if (Input.GetButtonDown("ArrowAttack") && Time.time >= next_Time_ArrowAttack && !stats_UsingMeleeAttack)
             {
-                next_Time_ArrowAttack = Time.time + 1f / pa_ArrowFireRate;
-                ShootArrowAttack();
+                next_Time_ArrowAttack = Time.time + 1f / stats_ArrowFireRate;
+                ShootBowAttack();
             }
-            if (Input.GetButtonDown("LightAttack") && Time.time >= next_Time_LightAttack && pa_AttackCount <3)
+            if (Input.GetButtonDown("LightAttack") && Time.time >= next_Time_LightAttack && stats_AttackCount <3)
             {
-                next_Time_LightAttack = Time.time + 1f / pa_LightAttackRate;
+                next_Time_LightAttack = Time.time + 1f / stats_LightAttackRate;
                 LightMeleeAttack();
             }
-            if (Input.GetButtonDown("HeavyAttack") && Time.time >= next_Time_HeavyAttack && pa_AttackCount < 3)
+            if (Input.GetButtonDown("HeavyAttack") && Time.time >= next_Time_HeavyAttack && stats_AttackCount < 3)
             {
-                next_Time_HeavyAttack = Time.time + 1f / pa_HeavyAttackRate;
+                next_Time_HeavyAttack = Time.time + 1f / stats_HeavyAttackRate;
                 HeavyMeleeAttack();
             }
         }
-        if (pa_AttackTimeReset > 0)
+        if (stats_AttackTimeReset > 0)
         {
             StartMeleeTimer();
         }
-        if (pa_AttackTimeReset <= 0)
+        if (stats_AttackTimeReset <= 0)
         {
             ResetMeleeCounter();
         }
     }
-    void ShootArrowAttack()
+    //Projectile
+    void ShootBowAttack()
     {
-        if (inv_TotalArrow > 0)
-        {
-            GameObject a = Instantiate(go_Arrow, go_ArrowSpawnPos.transform.position, transform.rotation);
-            scp_PlayerAnim.ArrowAttackAnim();
-            inv_TotalArrow--;
-            scp_PlayerUI.UpdateArrowInventory(inv_TotalArrow);
-        }
+        GameObject a = Instantiate(go_Arrow, go_ArrowSpawnPos.transform.position, transform.rotation);
+        a.GetComponent<Projectile>().go_ProjectileDamage = stats_BowDamage;
+        a.GetComponent<Projectile>().go_ProjectileSpeed = stats_ArrowSpeed;
+        scp_PlayerAnim.ArrowAttackAnim();
     }
+    //SwordAttack
     void LightMeleeAttack()
     {
-        scp_PlayerDamageBox.Damage = pa_LightMeleeDamage;
-        pa_UsingMeleeAttack = true;
-        pa_AttackCount++;
-        scp_PlayerAnim.LightMeleeAttackAnim(pa_AttackCount);
-        pa_AttackTimeReset = pa_LightMeleeTimeBeforeReset;
+        scp_PlayerDamageBox.Damage = stats_LightMeleeDamage;
+        stats_UsingMeleeAttack = true;
+        stats_AttackCount++;
+        scp_PlayerAnim.LightMeleeAttackAnim(stats_AttackCount);
+        stats_AttackTimeReset = stats_LightMeleeTimeBeforeReset;
     }
+    //AxeAttack
     void HeavyMeleeAttack()
     {
-        scp_PlayerDamageBox.Damage = pa_HeavyMeleeDamage;
-        pa_UsingMeleeAttack = true;
-        pa_AttackCount++;
-        scp_PlayerAnim.HeavyMeleeAttackAnim(pa_AttackCount);
-        pa_AttackTimeReset = pa_HeavyMeleeTimeBeforeReset;
+        scp_PlayerDamageBox.Damage = stats_HeavyMeleeDamage;
+        stats_UsingMeleeAttack = true;
+        stats_AttackCount++;
+        scp_PlayerAnim.HeavyMeleeAttackAnim(stats_AttackCount);
+        stats_AttackTimeReset = stats_HeavyMeleeTimeBeforeReset;
     }
+    //Timer to reset AttackCount
     void StartMeleeTimer()
     {
-        pa_AttackTimeReset -= Time.deltaTime;
+        stats_AttackTimeReset -= Time.deltaTime;
     }
     void ResetMeleeCounter()
     {
-        pa_AttackTimeReset = 0;
-        pa_AttackCount = 0;
-        pa_UsingMeleeAttack = false;
+        stats_AttackTimeReset = 0;
+        stats_AttackCount = 0;
+        stats_UsingMeleeAttack = false;
+    }
+    internal void UpdateSwordStats(bool Multiply, bool Divide, float valueto)
+    {
+        if (Multiply)
+        {
+            stats_LightMeleeDamage *= valueto;
+        }
+        if (Divide)
+        {
+            stats_LightMeleeDamage /= valueto;
+        }
+    }
+    internal void ChangeSword(float dmg)
+    {
+        stats_StartingLightMeleeDamage = dmg;
+        stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
+    }
+    internal void UpdateAxeStats(bool Multiply, bool Divide, float valueto)
+    {
+        if (Multiply)
+        {
+            stats_HeavyMeleeDamage *= valueto;
+        }
+        if (Divide)
+        {
+            stats_HeavyMeleeDamage /= valueto;
+        }
+    }
+    internal void ChangeAxe(float dmg)
+    {
+        stats_StartingHeavyMeleeDamage = dmg;
+        stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
+    }
+    internal void UpdateBowDamageStats(bool Multiply, bool Divide, float valueto)
+    {
+        if (Multiply)
+        {
+            stats_BowDamage *= valueto;
+        }
+        if (Divide)
+        {
+            stats_BowDamage /= valueto;
+        }
+    }
+    internal void ChangeBow(float dmg,float speed)
+    {
+        stats_StartingBowDamage = dmg;
+        stats_BowDamage = stats_StartingBowDamage;
     }
 }

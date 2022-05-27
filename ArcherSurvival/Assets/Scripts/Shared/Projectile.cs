@@ -5,8 +5,8 @@ using UnityEngine;
 public class Projectile : MonoBehaviour
 {
     Rigidbody2D p_RigidBody2D;
-    [SerializeField] float go_ProjectileSpeed;
-    [SerializeField] int go_ProjectileDamage;
+    [SerializeField]internal float go_ProjectileSpeed;
+    [SerializeField]internal float go_ProjectileDamage;
     private void Start()
     {
         p_RigidBody2D = GetComponent<Rigidbody2D>();
