@@ -137,9 +137,9 @@ public class PlayerAttack : MonoBehaviour
             stats_LightMeleeDamage /= valueto;
         }
     }
-    internal void ChangeSword(float dmg)
+    internal void ChangeSword(PlayerWeapon_SO PWSO)
     {
-        stats_StartingLightMeleeDamage = dmg;
+        stats_StartingLightMeleeDamage = PWSO.weapon_Damage;
         stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
     }
     internal void UpdateAxeStats(bool Multiply, bool Divide, float valueto)
@@ -153,9 +153,9 @@ public class PlayerAttack : MonoBehaviour
             stats_HeavyMeleeDamage /= valueto;
         }
     }
-    internal void ChangeAxe(float dmg)
+    internal void ChangeAxe(PlayerWeapon_SO PWSO)
     {
-        stats_StartingHeavyMeleeDamage = dmg;
+        stats_StartingHeavyMeleeDamage = PWSO.weapon_Damage;
         stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
     }
     internal void UpdateBowDamageStats(bool Multiply, bool Divide, float valueto)
@@ -169,9 +169,11 @@ public class PlayerAttack : MonoBehaviour
             stats_BowDamage /= valueto;
         }
     }
-    internal void ChangeBow(float dmg,float speed)
+    internal void ChangeBow(PlayerWeapon_SO PWSO)
     {
-        stats_StartingBowDamage = dmg;
+        stats_StartingBowDamage = PWSO.weapon_Damage;
+        stats_StartingArrowSpeed = PWSO.weapon_ProjectileSpeed;
         stats_BowDamage = stats_StartingBowDamage;
+        stats_ArrowSpeed = stats_StartingArrowSpeed;
     }
 }

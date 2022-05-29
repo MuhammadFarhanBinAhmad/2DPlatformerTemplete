@@ -123,6 +123,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b4278c85d7becb1468f6d35d6a77f892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  so_PlayerSword: {fileID: 11400000, guid: 0665973e0b767154e953ebea7f097a82, type: 2}
+  so_PlayerWeaponStats: {fileID: 11400000, guid: 0665973e0b767154e953ebea7f097a82, type: 2}
   stats_Damage: 0
-  ui_SwordImageSprite: {fileID: 0}
+  stats_Speed: 0
+  ui_WeaponImageSprite: {fileID: 0}

@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2243779742296647075
+--- !u!1 &2791595255196001983
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,10 +8,10 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 2243779742296647077}
-  - component: {fileID: 2243779742296647074}
-  - component: {fileID: 2243779742296647079}
-  - component: {fileID: 2243779742296647076}
+  - component: {fileID: 2791595255196001977}
+  - component: {fileID: 6778212796763104144}
+  - component: {fileID: 6778212796763104149}
+  - component: {fileID: 6778212796763104150}
   m_Layer: 0
   m_Name: VitalityNecklace
   m_TagString: Untagged
@@ -19,69 +19,40 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &2243779742296647077
+--- !u!4 &2791595255196001977
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2243779742296647075}
+  m_GameObject: {fileID: 2791595255196001983}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: 6.589429, y: 0.45498013, z: -2.4530997}
+  m_LocalScale: {x: 5, y: 5, z: 1}
   m_Children: []
-  m_Father: {fileID: 2791595255196001977}
+  m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &2243779742296647074
+--- !u!114 &6778212796763104144
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2243779742296647075}
+  m_GameObject: {fileID: 2791595255196001983}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2c974e194cc9c364e85d4ad3a9d8c892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ui_EquipmentIcon: {fileID: 21300000, guid: 19230aef37a0f0e4bb476905b3f60d4d, type: 3}
-  ui_EquipmentName: 
-  effect_PlayerHealth: 1
-  effect_PlayerSpeed: 1
-  effect_SwordDamage: 1
-  effect_AxeDamage: 1
-  effect_ArrowDamage: 0
-  effect_ArrowFireRate: 0
-  effect_ArrowSpecialAbility: 0
-  playerstats_ToMultiplyHealth: 1
-  playerstats_ToDivideHealth: 0
-  playerstats_HealthMultiplier_Divider: 1.5
-  playerstats_ToMultiplySpeed: 0
-  playerstats_ToDivideSpeed: 0
-  playerstats_SpeedMultiplier_Divider: 0
-  sword_ToMultiplySwordDamage: 0
-  sword_ToDivideSwordDamage: 0
-  sword_DamageMultiplier_Divider: 0
-  effect_SwordAfterBurn: 0
-  axe_ToMultiplyAxeDamage: 0
-  axe_ToDivideAxeDamage: 0
-  axe_DamageMultiplier_Divider: 0
-  effect_AxeAfterBurn: 0
-  bow_ToMultiplyBowDamage: 0
-  bow_ToDivideBowDamage: 0
-  bow_DamageMultiplier_Divider: 0
-  bow_ToMultiplyFirerate: 0
-  bow_ToDivideFirerate: 0
-  bow_FirerateMultiplier_Divider: 0
-  effect_ArrowAfterBurn: 0
---- !u!212 &2243779742296647079
+  SO_CurrentPlayerPassiveEquipmentEqipped: {fileID: 11400000, guid: 647a85ad0e9c37343b52c7c0bb34e53f, type: 2}
+--- !u!212 &6778212796763104149
 SpriteRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2243779742296647075}
+  m_GameObject: {fileID: 2791595255196001983}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -127,13 +98,13 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
---- !u!61 &2243779742296647076
+--- !u!61 &6778212796763104150
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2243779742296647075}
+  m_GameObject: {fileID: 2791595255196001983}
   m_Enabled: 1
   m_Density: 1
   m_Material: {fileID: 0}
@@ -153,34 +124,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.16, y: 0.16}
   m_EdgeRadius: 0
---- !u!1 &2791595255196001983
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 2791595255196001977}
-  m_Layer: 0
-  m_Name: VitalityNecklace
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &2791595255196001977
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2791595255196001983}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 11.546731, y: 0.4221596, z: -2.4530997}
-  m_LocalScale: {x: 5, y: 5, z: 1}
-  m_Children:
-  - {fileID: 2243779742296647077}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

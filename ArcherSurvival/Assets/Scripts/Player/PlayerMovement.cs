@@ -11,15 +11,21 @@ public class PlayerMovement : MonoBehaviour
     PlayerGroundCheck scp_PlayerGroundCheck;
 
     //Movement
+    [Header("PlayerSpeed")]
     [SerializeField] internal float m_StartingPlayerSpeed;
     [SerializeField] internal float m_PlayerSpeed;
+    [Header("PlayerJump")]
     [SerializeField] float m_PlayerJumpForce;
+    [Header("PlayerDodgeRoll")]
     [SerializeField] float m_RollMultiplier;
     [SerializeField] bool m_IsRolling;
     [SerializeField] float m_JumpTimeCounter;
     [SerializeField] float m_JumpTime;
     //Effect
-    [SerializeField] GameObject vfx_JumpSmoke;
+    //[SerializeField] GameObject vfx_JumpSmoke;
+    [Header("Effects")]
+    [SerializeField] Animator anim_JumpSmoke,anim_RollSmoke;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -63,6 +69,7 @@ public class PlayerMovement : MonoBehaviour
         if (Input.GetButton("DodgeRoll") && Input.GetAxis("Horizontal") !=0 && scp_PlayerGroundCheck.m_IsGrounded)
         {
             transform.position += new Vector3(m_HorizontalMovement, 0, 0) * m_PlayerSpeed * m_RollMultiplier * Time.fixedDeltaTime;
+            anim_RollSmoke.SetTrigger("SmokeRoll");
         }
     }
     void Jumping()
@@ -71,7 +78,8 @@ public class PlayerMovement : MonoBehaviour
         {
             m_JumpTimeCounter = m_JumpTime;
             p_Rigidbody2D.velocity = Vector2.up * m_PlayerJumpForce;
-            vfx_JumpSmoke.SetActive(true);
+            //vfx_JumpSmoke.SetActive(true);
+            anim_JumpSmoke.SetTrigger("JumpSmoke");
         }
         if (Input.GetKey(KeyCode.Space) && !scp_PlayerGroundCheck.m_IsGrounded)
         {
