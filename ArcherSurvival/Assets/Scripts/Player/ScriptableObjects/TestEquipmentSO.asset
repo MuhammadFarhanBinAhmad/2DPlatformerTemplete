@@ -14,14 +14,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ui_EquipmentIcon: {fileID: 0}
   ui_EquipmentName: 
-  effect_PlayerHealth: 0
+  effect_PlayerHealth: 1
   effect_PlayerSpeed: 0
   effect_SwordDamage: 0
   effect_AxeDamage: 0
-  effect_ArrowDamage: 0
-  effect_ArrowFireRate: 0
+  effect_ArrowStats: 0
   effect_ArrowSpecialAbility: 0
-  playerstats_ToMultiplyHealth: 0
+  playerstats_ToMultiplyHealth: 1
   playerstats_ToDivideHealth: 0
   playerstats_HealthMultiplier_Divider: 0
   playerstats_ToMultiplySpeed: 0
@@ -35,10 +34,16 @@ MonoBehaviour:
   axe_ToDivideAxeDamage: 0
   axe_DamageMultiplier_Divider: 0
   effect_AxeAfterBurn: 0
+  effect_BowDamage: 0
   bow_ToMultiplyBowDamage: 0
   bow_ToDivideBowDamage: 0
   bow_DamageMultiplier_Divider: 0
-  bow_ToMultiplyFirerate: 0
-  bow_ToDivideFirerate: 0
+  effect_BowFireRate: 0
+  bow_ToMultiplyBowFirerate: 0
+  bow_ToDivideBowFirerate: 0
   bow_FirerateMultiplier_Divider: 0
+  effect_ArrowSpeed: 0
+  bow_ToMultiplyArrowSpeed: 0
+  bow_ToDivideArrowSpeed: 0
+  bow_ArrowSpeedMultiplier_Divider: 0
   effect_ArrowAfterBurn: 0

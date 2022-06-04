@@ -12,6 +12,8 @@ public class EnemiesHealth : MonoBehaviour
     [SerializeField] int es_StunPeriod;
     [SerializeField] bool type_FlyingEnemy;
 
+    public List<Animator> anim_HitEffect;
+
     //for FlyingEnemy
     bool hit_Floor;
     private void Start()
@@ -28,12 +30,18 @@ public class EnemiesHealth : MonoBehaviour
         {
             es_EnemyHealth -= dmg;
             scp_EnemiesAnim.HitAnim();
+            int r = Random.Range(0, anim_HitEffect.Count - 1);
+            print(r);
+            anim_HitEffect[r].SetTrigger("Hit");
         }
         if (es_EnemyHealth <= 0)
         {
             if (!type_FlyingEnemy)
             {
                 scp_EnemiesAnim.DeathAnim();
+                scp_EnemiesMovement.em_Stop = true;
+                GetComponent<BoxCollider2D>().isTrigger = true;
+                GetComponent<Rigidbody2D>().simulated = false;
                 StartCoroutine("DestroyGameObject");
             }
             if (type_FlyingEnemy)
@@ -47,6 +55,8 @@ public class EnemiesHealth : MonoBehaviour
     {
         es_EnemyHealth = es_StartingEnemyHealth;
         scp_EnemiesMovement.em_Stop = false;
+        GetComponent<BoxCollider2D>().isTrigger = false;
+        GetComponent<Rigidbody2D>().simulated = true;
     }
     internal void ResetHealth()
     {

@@ -12,6 +12,7 @@ public class PlayerWeapon_SO : ScriptableObject
     public int weapon_Damage;
     [Header("For Projectile only")]
     public int weapon_ProjectileSpeed;//For projectile only
-
+    public float weapon_FireRate;
+    [Header("For UI only")]
     public Sprite weapon_Sprite;
 }

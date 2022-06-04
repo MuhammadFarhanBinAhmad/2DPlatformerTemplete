@@ -123,7 +123,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 437071320497964197}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.231, y: -0.1, z: 0}
+  m_LocalPosition: {x: -0.2, y: -0.165, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 8973562156861938840}
@@ -382,6 +382,7 @@ GameObject:
   - component: {fileID: 1919842748}
   - component: {fileID: 1919842749}
   - component: {fileID: 577629736}
+  - component: {fileID: 439573622}
   m_Layer: 0
   m_Name: Player_Sprite
   m_TagString: Player
@@ -553,7 +554,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   s_TotalPlayerHealth: 100
   s_CurrentPlayerHealth: 0
-  s_PushbackForce: 3
+  s_PushbackForce: 1
   t_StunTime: 1
 --- !u!114 &1919842748
 MonoBehaviour:
@@ -567,7 +568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 20c31506f78de1347bb33cdaa88751ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_StartingPlayerSpeed: 2
+  m_StartingPlayerSpeed: 1
   m_PlayerSpeed: 0
   m_PlayerJumpForce: 6
   m_RollMultiplier: 2
@@ -591,17 +592,18 @@ MonoBehaviour:
   scp_PlayerDamageBox: {fileID: 8973562157051276634}
   go_ArrowSpawnPos: {fileID: 8973562156525624850}
   go_Arrow: {fileID: 6979420186180525528, guid: 172261d3778d28f4bb4c0084a09a3fb8, type: 3}
-  stats_ArrowFireRate: 3
+  stats_BowFireRate: 2
   stats_LightAttackRate: 4
-  stats_HeavyAttackRate: 1.5
+  stats_HeavyAttackRate: 2
   stats_AttackCount: 0
   stats_LightMeleeTimeBeforeReset: 0.65
   stats_HeavyMeleeTimeBeforeReset: 0.75
   stats_UsingMeleeAttack: 0
-  stats_StartingLightMeleeDamage: 0
-  stats_StartingHeavyMeleeDamage: 0
-  stats_StartingBowDamage: 0
-  stats_StartingArrowSpeed: 0
+  stats_StartingLightMeleeDamage: 10
+  stats_StartingHeavyMeleeDamage: 20
+  stats_StartingBowDamage: 5
+  stats_StartingBowFireRate: 0
+  stats_StartingArrowSpeed: 15
   stats_LightMeleeDamage: 10
   stats_HeavyMeleeDamage: 20
   stats_BowDamage: 5
@@ -619,6 +621,31 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   SO_CurrentPlayerPassiveEquipmentEqipped: {fileID: 0}
+--- !u!114 &439573622
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8973562156861938843}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eba53bdc96c13094994c113a9de7b6f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  list_PlayerPassiveEquipment:
+  - name: LightBoots
+    PlayerPassiveEquipment: {fileID: 11400000, guid: 3d83545fa1e639a4eb78f77d32234f9a, type: 2}
+    NullItem: {fileID: 11400000, guid: 1c7444bd2e098ca4a80ed5001249fdd6, type: 2}
+    isUnlocked: 0
+  - name: ElegantQuiver
+    PlayerPassiveEquipment: {fileID: 11400000, guid: 8495d8367b7049f458b28a64a68c012a, type: 2}
+    NullItem: {fileID: 11400000, guid: 1c7444bd2e098ca4a80ed5001249fdd6, type: 2}
+    isUnlocked: 0
+  - name: VitalityNecklace
+    PlayerPassiveEquipment: {fileID: 11400000, guid: 647a85ad0e9c37343b52c7c0bb34e53f, type: 2}
+    NullItem: {fileID: 11400000, guid: 1c7444bd2e098ca4a80ed5001249fdd6, type: 2}
+    isUnlocked: 0
 --- !u!1 &8973562157051276644
 GameObject:
   m_ObjectHideFlags: 0

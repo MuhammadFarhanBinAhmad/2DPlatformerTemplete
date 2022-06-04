@@ -9,7 +9,7 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement scp_PlayerMovement;
     [SerializeField]PlayerDamageBox scp_PlayerDamageBox;
     PlayerGroundCheck scp_GroundCheck;
-    PlayerUI scp_PlayerUI;
+    PlayerHealth_EquipmentUI scp_PlayerHealth_EquipmentUI;
 
 
     /// <NOTE>
@@ -20,7 +20,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] GameObject go_Arrow;
 
     [Header("FireRate")]
-    [SerializeField] float stats_ArrowFireRate;
+    [SerializeField] float stats_BowFireRate;
     [SerializeField] float stats_LightAttackRate;
     [SerializeField] float stats_HeavyAttackRate;
 
@@ -36,6 +36,7 @@ public class PlayerAttack : MonoBehaviour
     [SerializeField] float stats_StartingLightMeleeDamage;
     [SerializeField] float stats_StartingHeavyMeleeDamage;
     [SerializeField] float stats_StartingBowDamage;
+    [SerializeField] float stats_StartingBowFireRate;
     [SerializeField] float stats_StartingArrowSpeed;
     [SerializeField] float stats_LightMeleeDamage;
     [SerializeField] float stats_HeavyMeleeDamage;
@@ -53,7 +54,7 @@ public class PlayerAttack : MonoBehaviour
         scp_PlayerAnim = FindObjectOfType<PlayerAnim>();
         scp_PlayerMovement = FindObjectOfType<PlayerMovement>();
         scp_GroundCheck = FindObjectOfType<PlayerGroundCheck>();
-        scp_PlayerUI = FindObjectOfType<PlayerUI>();
+        scp_PlayerHealth_EquipmentUI = FindObjectOfType<PlayerHealth_EquipmentUI>();
         //Implement starting value
         stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
         stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
@@ -66,7 +67,7 @@ public class PlayerAttack : MonoBehaviour
         {
             if (Input.GetButtonDown("ArrowAttack") && Time.time >= next_Time_ArrowAttack && !stats_UsingMeleeAttack)
             {
-                next_Time_ArrowAttack = Time.time + 1f / stats_ArrowFireRate;
+                next_Time_ArrowAttack = Time.time + 1f / stats_BowFireRate;
                 ShootBowAttack();
             }
             if (Input.GetButtonDown("LightAttack") && Time.time >= next_Time_LightAttack && stats_AttackCount <3)
@@ -126,6 +127,11 @@ public class PlayerAttack : MonoBehaviour
         stats_AttackCount = 0;
         stats_UsingMeleeAttack = false;
     }
+    /// <summary>
+    /// Update...Stats = For when an equipment current eqipped affects that object
+    /// Change...Stats = For when a weapon is change
+    /// Reset..Stats = To reset all stats of that current weapon type
+    /// </summary>
     internal void UpdateSwordStats(bool Multiply, bool Divide, float valueto)
     {
         if (Multiply)
@@ -136,11 +142,6 @@ public class PlayerAttack : MonoBehaviour
         {
             stats_LightMeleeDamage /= valueto;
         }
-    }
-    internal void ChangeSword(PlayerWeapon_SO PWSO)
-    {
-        stats_StartingLightMeleeDamage = PWSO.weapon_Damage;
-        stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
     }
     internal void UpdateAxeStats(bool Multiply, bool Divide, float valueto)
     {
@@ -153,11 +154,6 @@ public class PlayerAttack : MonoBehaviour
             stats_HeavyMeleeDamage /= valueto;
         }
     }
-    internal void ChangeAxe(PlayerWeapon_SO PWSO)
-    {
-        stats_StartingHeavyMeleeDamage = PWSO.weapon_Damage;
-        stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
-    }
     internal void UpdateBowDamageStats(bool Multiply, bool Divide, float valueto)
     {
         if (Multiply)
@@ -169,11 +165,60 @@ public class PlayerAttack : MonoBehaviour
             stats_BowDamage /= valueto;
         }
     }
+    internal void UpdateBowFireRateStats(bool Multiply, bool Divide, float valueto)
+    {
+        if (Multiply)
+        {
+            stats_BowFireRate *= valueto;
+        }
+        if (Divide)
+        {
+            stats_BowFireRate /= valueto;
+        }
+    }
+    internal void UpdateArrowSpeedStats(bool Multiply, bool Divide, float valueto)
+    {
+        if (Multiply)
+        {
+            stats_ArrowSpeed *= valueto;
+        }
+        if (Divide)
+        {
+            stats_ArrowSpeed /= valueto;
+        }
+    }
+    internal void ChangeSword(PlayerWeapon_SO PWSO)
+    {
+        stats_StartingLightMeleeDamage = PWSO.weapon_Damage;
+        stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
+    }
+    internal void ChangeAxe(PlayerWeapon_SO PWSO)
+    {
+        stats_StartingHeavyMeleeDamage = PWSO.weapon_Damage;
+        stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
+    }
     internal void ChangeBow(PlayerWeapon_SO PWSO)
     {
         stats_StartingBowDamage = PWSO.weapon_Damage;
+        stats_StartingBowFireRate = PWSO.weapon_FireRate;
         stats_StartingArrowSpeed = PWSO.weapon_ProjectileSpeed;
         stats_BowDamage = stats_StartingBowDamage;
+        stats_BowFireRate = stats_StartingBowFireRate;
         stats_ArrowSpeed = stats_StartingArrowSpeed;
+    }
+    internal void ResetSwordStats()
+    {
+        stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
+    }
+    internal void ResetAxeStats()
+    {
+        stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
+    }
+    internal void ResetBowAndArrowStats()
+    {
+        stats_BowDamage = stats_StartingBowDamage;
+        stats_BowFireRate = stats_StartingBowFireRate;
+        stats_ArrowSpeed = stats_StartingArrowSpeed;
+
     }
 }

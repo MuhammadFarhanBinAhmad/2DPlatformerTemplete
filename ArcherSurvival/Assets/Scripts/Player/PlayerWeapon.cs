@@ -21,17 +21,17 @@ public class PlayerWeapon : MonoBehaviour
             if (so_PlayerWeaponStats.is_Sword)
             {
                 other.GetComponent<PlayerAttack>().ChangeSword(so_PlayerWeaponStats);//update light damage value
-                FindObjectOfType<PlayerUI>().UpdateSwordIcon(ui_WeaponImageSprite);//update weapon Icon
+                FindObjectOfType<PlayerHealth_EquipmentUI>().UpdateSwordIcon(ui_WeaponImageSprite);//update weapon Icon
             }
             if (so_PlayerWeaponStats.is_Axe)
             {
                 other.GetComponent<PlayerAttack>().ChangeAxe(so_PlayerWeaponStats);//update heavy damage value
-                FindObjectOfType<PlayerUI>().UpdateAxeIcon(ui_WeaponImageSprite);
+                FindObjectOfType<PlayerHealth_EquipmentUI>().UpdateAxeIcon(ui_WeaponImageSprite);
             }
             if (so_PlayerWeaponStats.is_Bow)
             {
                 other.GetComponent<PlayerAttack>().ChangeBow(so_PlayerWeaponStats);//update projectile damage value
-                FindObjectOfType<PlayerUI>().UpdateBowIcon(ui_WeaponImageSprite);
+                FindObjectOfType<PlayerHealth_EquipmentUI>().UpdateBowIcon(ui_WeaponImageSprite);
             }
             Destroy(gameObject);
         }

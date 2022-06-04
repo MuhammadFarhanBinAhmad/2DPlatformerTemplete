@@ -3,12 +3,13 @@ using UnityEngine;
 using UnityEditor;
 using System;
 
-[CustomEditor(typeof(ScriptableObject_PlayerPassiveEquipment))]
+
+[CustomEditor(typeof(PlayerPassiveEquipment_SO))]
 public class CustomEditor_PlayerPassiveEqupiment : Editor
 {
     override public void OnInspectorGUI()
     {
-        var PPE = target as ScriptableObject_PlayerPassiveEquipment;
+        var PPE = target as PlayerPassiveEquipment_SO;
 
         PPE.effect_PlayerHealth = EditorGUILayout.Toggle("AffectPlayerHealth", PPE.effect_PlayerHealth);
         PPE.effect_PlayerSpeed = EditorGUILayout.Toggle("AffectPlayerSpeed", PPE.effect_PlayerSpeed);
@@ -113,8 +114,8 @@ public class CustomEditor_PlayerPassiveEqupiment : Editor
                 EditorGUILayout.LabelField("Bow&ArrowDamage");
 
                 EditorGUILayout.PrefixLabel("ToEffectDamage");
-                PPE.effect_ArrowDamage = EditorGUILayout.Toggle(PPE.effect_ArrowDamage);
-                using (var ArrowDamagegroup = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(PPE.effect_ArrowDamage)))
+                PPE.effect_BowDamage = EditorGUILayout.Toggle(PPE.effect_BowDamage);
+                using (var ArrowDamagegroup = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(PPE.effect_BowDamage)))
                 {
                     if (ArrowDamagegroup.visible)
                     {
@@ -130,16 +131,16 @@ public class CustomEditor_PlayerPassiveEqupiment : Editor
                 EditorGUILayout.LabelField("-------------------------------------------");
 
                 EditorGUILayout.PrefixLabel("ToEffectFireRate");
-                PPE.effect_ArrowFireRate = EditorGUILayout.Toggle(PPE.effect_ArrowFireRate);
-                using (var ArrowFireRategroup = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(PPE.effect_ArrowFireRate)))
+                PPE.effect_BowFireRate = EditorGUILayout.Toggle(PPE.effect_BowFireRate);
+                using (var ArrowFireRategroup = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(PPE.effect_BowFireRate)))
                 {
                     if (ArrowFireRategroup.visible)
                     {
 
                         EditorGUILayout.PrefixLabel("ToMultiplyBow&ArrowFireRate");
-                        PPE.bow_ToMultiplyFirerate = EditorGUILayout.Toggle(PPE.bow_ToMultiplyFirerate);
+                        PPE.bow_ToMultiplyBowFirerate = EditorGUILayout.Toggle(PPE.bow_ToMultiplyBowFirerate);
                         EditorGUILayout.PrefixLabel("ToDivideBow&ArrowDamage");
-                        PPE.bow_ToDivideFirerate = EditorGUILayout.Toggle(PPE.bow_ToDivideFirerate);
+                        PPE.bow_ToDivideBowFirerate = EditorGUILayout.Toggle(PPE.bow_ToDivideBowFirerate);
                         EditorGUILayout.PrefixLabel("Amount To Multiply/Divide");
                         PPE.bow_FirerateMultiplier_Divider = EditorGUILayout.FloatField(PPE.bow_FirerateMultiplier_Divider);
                     }
@@ -170,23 +171,9 @@ public class CustomEditor_PlayerPassiveEqupiment : Editor
                 EditorGUI.indentLevel--;
             }
         }
-        using (var group = new EditorGUILayout.FadeGroupScope(Convert.ToSingle(PPE.effect_ArrowFireRate)))
+        if (GUI.changed)
         {
-            if (group.visible)
-            {
-                EditorGUI.indentLevel++;
-
-                EditorGUILayout.LabelField("-------------------------------------------");
-                EditorGUILayout.LabelField("Bow&ArrowFireRate");
-
-                EditorGUILayout.PrefixLabel("ToMultiplyBow&ArrowFireRate");
-                PPE.bow_ToMultiplyFirerate = EditorGUILayout.Toggle(PPE.bow_ToMultiplyFirerate);
-                EditorGUILayout.PrefixLabel("ToDivideBow&ArrowFireRate");
-                PPE.bow_ToDivideFirerate = EditorGUILayout.Toggle(PPE.bow_ToDivideFirerate);
-                EditorGUILayout.PrefixLabel("Amount To Multiply/Divide");
-                PPE.bow_FirerateMultiplier_Divider = EditorGUILayout.FloatField(PPE.bow_FirerateMultiplier_Divider);
-                EditorGUI.indentLevel--;
-            }
+            EditorUtility.SetDirty(PPE);
         }
     }
 }
