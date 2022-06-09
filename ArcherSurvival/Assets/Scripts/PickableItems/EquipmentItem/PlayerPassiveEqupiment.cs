@@ -11,8 +11,7 @@ public class PlayerPassiveEqupiment : MonoBehaviour
     void UnlockEquipment()
     {
         PlayerInventory PI = FindObjectOfType<PlayerInventory>();
-        PlayerEquipmentManager PEM = FindObjectOfType<PlayerEquipmentManager>();
-        for (int i = 0; i < PI.list_PlayerPassiveEquipment.Count-1; i++)
+        for (int i = 0; i <= PI.list_PlayerPassiveEquipment.Count-1; i++)
         {
             if (PI.list_PlayerPassiveEquipment[i].PlayerPassiveEquipment == SO_CurrentPlayerPassiveEquipmentEqipped)
             {

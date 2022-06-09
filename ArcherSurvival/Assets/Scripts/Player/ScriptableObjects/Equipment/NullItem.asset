@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3b55d205652e3c54b905e8c01f5f5ca7, type: 3}
   m_Name: NullItem
   m_EditorClassIdentifier: 
-  ui_EquipmentIcon: {fileID: 0}
+  ui_EquipmentIcon: {fileID: 9112046958845575407, guid: b39ed52766a96b245865f2e6bc05aacc, type: 3}
   ui_EquipmentName: Locked
   effect_PlayerHealth: 0
   effect_PlayerSpeed: 0

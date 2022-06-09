@@ -9,8 +9,11 @@ public class PlayerAttack : MonoBehaviour
     PlayerMovement scp_PlayerMovement;
     [SerializeField]PlayerDamageBox scp_PlayerDamageBox;
     PlayerGroundCheck scp_GroundCheck;
-    PlayerHealth_EquipmentUI scp_PlayerHealth_EquipmentUI;
 
+    [Header("StartingWeapons")]
+    [SerializeField] PlayerWeapon_SO player_StarterSword;
+    [SerializeField] PlayerWeapon_SO player_StarterAxe;
+    [SerializeField] PlayerWeapon_SO player_StarterBow;
 
     /// <NOTE>
     /// Need to manually input weapon stats in the beginning
@@ -54,12 +57,6 @@ public class PlayerAttack : MonoBehaviour
         scp_PlayerAnim = FindObjectOfType<PlayerAnim>();
         scp_PlayerMovement = FindObjectOfType<PlayerMovement>();
         scp_GroundCheck = FindObjectOfType<PlayerGroundCheck>();
-        scp_PlayerHealth_EquipmentUI = FindObjectOfType<PlayerHealth_EquipmentUI>();
-        //Implement starting value
-        stats_LightMeleeDamage = stats_StartingLightMeleeDamage;
-        stats_HeavyMeleeDamage = stats_StartingHeavyMeleeDamage;
-        stats_BowDamage = stats_StartingBowDamage;
-        stats_ArrowSpeed = stats_StartingArrowSpeed;
     }
     void Update()
     {

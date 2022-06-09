@@ -5,7 +5,6 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     Rigidbody2D p_Rigidbody2D;
-    PlayerAnim scp_PlayerAnim;
     PlayerAttack scp_PlayerAttack;
     PlayerHealth scp_PlayerHealth;
     PlayerGroundCheck scp_PlayerGroundCheck;
@@ -30,7 +29,6 @@ public class PlayerMovement : MonoBehaviour
     void Start()
     {
         p_Rigidbody2D = GetComponent<Rigidbody2D>();
-        scp_PlayerAnim = FindObjectOfType<PlayerAnim>();
         scp_PlayerAttack = GetComponent<PlayerAttack>();
         scp_PlayerHealth = GetComponent<PlayerHealth>();
         scp_PlayerGroundCheck = FindObjectOfType<PlayerGroundCheck>();
@@ -74,7 +72,7 @@ public class PlayerMovement : MonoBehaviour
     }
     void Jumping()
     {
-        if (Input.GetKeyDown(KeyCode.Space) && scp_PlayerGroundCheck.m_IsGrounded)
+        if (Input.GetButtonDown("Jump") && scp_PlayerGroundCheck.m_IsGrounded)
         {
             m_JumpTimeCounter = m_JumpTime;
             p_Rigidbody2D.velocity = Vector2.up * m_PlayerJumpForce;

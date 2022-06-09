@@ -74,7 +74,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: -3657123471038354241, guid: a71788cb285aeef4fa3f7601c42585c3, type: 3}
+  m_Sprite: {fileID: 1788521935399006232, guid: a71788cb285aeef4fa3f7601c42585c3, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -124,6 +124,3 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   so_PlayerWeaponStats: {fileID: 11400000, guid: e840cb19357263741abd3c61c92d1df5, type: 2}
-  stats_Damage: 0
-  stats_Speed: 0
-  ui_WeaponImageSprite: {fileID: 0}

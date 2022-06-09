@@ -11,16 +11,13 @@ public class PlayerHealth : MonoBehaviour
     public float s_TotalPlayerHealth;
     public float s_CurrentPlayerHealth;
 
-    internal Rigidbody2D p_Rigidbody2D;
-
     internal bool s_isStun;
-    [SerializeField] int s_PushbackForce;
+    [SerializeField] float s_PushbackForce;
 
     public float t_StunTime;
 
     private void Start()
     {
-        p_Rigidbody2D = GetComponent<Rigidbody2D>();
         scp_PlayerAnim = FindObjectOfType<PlayerAnim>();
         scp_PlayerHealth_EquipmentUI = FindObjectOfType<PlayerHealth_EquipmentUI>();
 
@@ -31,12 +28,15 @@ public class PlayerHealth : MonoBehaviour
     }
     internal void TakeDamage(int dmg)
     {
-        p_Rigidbody2D.velocity = -transform.right * s_PushbackForce;//pushback player
-        scp_PlayerAnim.StunAnimation();
-        StartCoroutine("StunPeriod");
-        s_isStun = true;
-        s_CurrentPlayerHealth -= dmg;
-        scp_PlayerHealth_EquipmentUI.UpdateHealthBar();
+        if (!s_isStun)
+        {
+            transform.position += new Vector3(-1, 0, 0) * s_PushbackForce * Time.fixedDeltaTime; ;//pushback player
+            scp_PlayerAnim.StunAnimation();
+            StartCoroutine("StunPeriod");
+            s_isStun = true;
+            s_CurrentPlayerHealth -= dmg;
+            scp_PlayerHealth_EquipmentUI.UpdateHealthBar();
+        }    
 
     }
     //for Healthpack and HeatlhDrain Ability

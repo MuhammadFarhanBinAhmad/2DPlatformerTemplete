@@ -1,0 +1,49 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3b55d205652e3c54b905e8c01f5f5ca7, type: 3}
+  m_Name: GloveOfSteel
+  m_EditorClassIdentifier: 
+  ui_EquipmentIcon: {fileID: 21300000, guid: 1a51f684db65a0243bb527a32741d7ce, type: 3}
+  ui_EquipmentName: GloveOfSteel
+  effect_PlayerHealth: 0
+  effect_PlayerSpeed: 0
+  effect_SwordDamage: 1
+  effect_AxeDamage: 1
+  effect_ArrowStats: 0
+  effect_ArrowSpecialAbility: 0
+  playerstats_ToMultiplyHealth: 0
+  playerstats_ToDivideHealth: 0
+  playerstats_HealthMultiplier_Divider: 0
+  playerstats_ToMultiplySpeed: 0
+  playerstats_ToDivideSpeed: 0
+  playerstats_SpeedMultiplier_Divider: 0
+  sword_ToMultiplySwordDamage: 0
+  sword_ToDivideSwordDamage: 1
+  sword_DamageMultiplier_Divider: 1.5
+  effect_SwordAfterBurn: 0
+  axe_ToMultiplyAxeDamage: 1
+  axe_ToDivideAxeDamage: 0
+  axe_DamageMultiplier_Divider: 1.5
+  effect_AxeAfterBurn: 0
+  effect_BowDamage: 0
+  bow_ToMultiplyBowDamage: 0
+  bow_ToDivideBowDamage: 0
+  bow_DamageMultiplier_Divider: 0
+  effect_BowFireRate: 0
+  bow_ToMultiplyBowFirerate: 0
+  bow_ToDivideBowFirerate: 0
+  bow_FirerateMultiplier_Divider: 0
+  effect_ArrowSpeed: 0
+  bow_ToMultiplyArrowSpeed: 0
+  bow_ToDivideArrowSpeed: 0
+  bow_ArrowSpeedMultiplier_Divider: 0
+  effect_ArrowAfterBurn: 0

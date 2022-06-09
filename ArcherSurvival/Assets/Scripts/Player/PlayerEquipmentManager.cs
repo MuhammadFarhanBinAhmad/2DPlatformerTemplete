@@ -47,7 +47,7 @@ public class PlayerEquipmentManager : MonoBehaviour
         }
         SO_CurrentPlayerPassiveEquipmentEqipped = null;
     }
-    void ChangeStats()
+    void ChangePassiveEquipment()
     {
         //Handle all equipment effects
         if (SO_CurrentPlayerPassiveEquipmentEqipped.effect_PlayerHealth)
@@ -116,7 +116,7 @@ public class PlayerEquipmentManager : MonoBehaviour
         {
             ResetStats();
             SO_CurrentPlayerPassiveEquipmentEqipped = SOCPPEE;
-            ChangeStats();
+            ChangePassiveEquipment();
             //reset all stats
             return;
         }
@@ -124,8 +124,9 @@ public class PlayerEquipmentManager : MonoBehaviour
         if (SO_CurrentPlayerPassiveEquipmentEqipped == null)
         {
             SO_CurrentPlayerPassiveEquipmentEqipped = SOCPPEE;
-            ChangeStats();
+            ChangePassiveEquipment();
             return;
         }
     }
+
 }
